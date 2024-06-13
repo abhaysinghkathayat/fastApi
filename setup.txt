@@ -1,0 +1,87 @@
+py -3 -m venv venv
+venv\Scripts\activate.bat
+
+Install fastApi Package
+pip install fastapi[all]
+pip install fastapi uvicorn
+
+
+#Start uvicorn server
+uvicorn main:app --reload
+
+#Backend Validation
+pip install pydantic
+
+#Install PostSql
+pip install psycopg2
+
+
+#Now Move Forword to SqlAlchomy
+pip install sql 
+
+#For hashing
+pip install "passlib[bcrypt]"
+
+Check how many lib are installed
+pip freeze 
+
+#for hashing
+pip install python-jose[cryptpgraphy]
+
+#install 
+pip install pydantic
+pip install pydantic-settings
+
+
+#install
+pip install python-dotenv
+
+#install 
+pip install alembic
+
+#create folder in alembic
+             <folder_name>
+alembic init alembic
+
+#Track changes in database
+alembic revision --help
+
+#Create New table
+alembic revision -m "Create user table"
+
+alembic revision <revisionNumber>
+
+migrate with revision number
+alembic upgrade <revisionNumber>
+
+
+#Add new colum in table
+alembic revision -m "add content colum to post table"
+
+#check current revision Id
+alembic current
+alembic heads
+
+#migrate above column in database
+alembic upgrade heads
+
+#Remov field from database
+alembic downgrade e39f9cd60220
+
+
+#Add new colum in table
+alembic revision -m "add foregin-key to posts table"
+
+#AutoGenerate table
+alembic revision  --autogenerate -m "auto-vote"
+
+#Add phone number
+alembic revision -m "add phone number in users table"
+
+//Show all Modules in txt file
+pip freeze > requirement.txt
+
+//install all Modules
+pip install -r requirement.txt 
+
+//Add all files in github
