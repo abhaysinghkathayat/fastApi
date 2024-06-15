@@ -26,5 +26,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/pyapis:latest  # Specify the image tag here
+          tags: node945/pyapis:latest  # Specify the image tag here
 
