@@ -11,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -19,11 +18,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: node945
-          password: dckr_pat__D7MKY2lVv2En2Bo1HmACpNnmps
+      - name: Log in to Docker Hub (**Not Recommended**)
+        run: |
+          docker login -u node945 -p dckr_pat__D7MKY2lVv2En2Bo1HmACpNnmps
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -31,8 +28,8 @@ jobs:
           context: .
           push: true
           run: |
-          docker buildx build \
-            --iidfile /tmp/docker-actions-toolkit-ifiwFn/iidfile \
-            --tag node945/PyApis:latest \
-            --metadata-file /tmp/docker-actions-toolkit-ifiwFn/metadata-file \
-            --push .
+            docker buildx build \
+              --iidfile /tmp/docker-actions-toolkit-ifiwFn/iidfile \
+              --tag node945/PyApis:latest \
+              --metadata-file /tmp/docker-actions-toolkit-ifiwFn/metadata-file \
+              --push .
