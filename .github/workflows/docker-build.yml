@@ -1,3 +1,33 @@
+# name: Docker Build and Push
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+
+#       - name: Set up Docker Buildx
+#         uses: docker/setup-buildx-action@v3
+
+#       - name: Log in to Docker Hub
+#         run: docker login -u node945 -p dckr_pat__D7MKY2lVv2En2Bo1HmACpNnmps
+
+#       - name: Build and push Docker image
+#         uses: docker/build-push-action@v4
+#         with:
+#           context: .
+#           push: true
+#           tags: node945/pyapis:latest  # Specify the image tag here
+
 name: Docker Build and Push
 
 on:
@@ -21,10 +51,15 @@ jobs:
       - name: Log in to Docker Hub
         run: docker login -u node945 -p dckr_pat__D7MKY2lVv2En2Bo1HmACpNnmps
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: node945/pyapis:latest  # Specify the image tag here
+      - name: Build FastAPI Docker image
+        run: docker build -t node945/pyapis:latest .
+
+      - name: Build NGINX Docker image
+        run: docker build -t node945/nginx-proxy -f Dockerfile.nginx .
+
+      - name: Push Docker images to Docker Hub
+        run: |
+          docker push node945/pyapis:latest
+          docker push node945/nginx-proxy:latest
+
 
