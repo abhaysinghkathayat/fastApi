@@ -1,0 +1,11 @@
+# Use the official NGINX image as the base image
+FROM nginx:latest
+
+# Copy your NGINX configuration file to the container
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Expose port 80 (default HTTP port for NGINX)
+EXPOSE 80
+
+# Start NGINX in the foreground when the container starts
+CMD ["nginx", "-g", "daemon off;"]
