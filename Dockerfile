@@ -9,7 +9,8 @@ COPY . .
 
 # Install uvicorn, gunicorn for production, and any other dependencies
 RUN pip install --no-cache-dir uvicorn gunicorn && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirement.txt
+    
 
 # Expose port 80 for production, or port 8000 for development with uvicorn
 EXPOSE 80
